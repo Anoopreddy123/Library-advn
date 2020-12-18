@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.Scanner;
+
 
 public class Truncate implements ActionListener {
     JFrame jf = new JFrame("Clearing");
     JLabel jl1=new JLabel();
-
+  JLabel Error = new JLabel();
     String sql = null;
     JButton jb1;
     JLabel jl3 = new JLabel();
@@ -67,12 +67,14 @@ public class Truncate implements ActionListener {
                 boolean rs = stmt.execute("SET FOREIGN_KEY_CHECKS = 0;");
                 boolean rs1 = stmt.execute("TRUNCATE table Library ;");
                 boolean rs2 = stmt.execute("SET FOREIGN_KEY_CHECKS = 1;");
+                label2.setText("Cleared Table.");
+                label2.setBounds(10,90,500,50);
             } catch (Exception e) {
-                e.printStackTrace();
+                Error.setText("Failed to remove Clear Library Data.");
+                Error.setBounds(10,90,500,50);
 
             }
-            label2.setText("Deleted record");
-            label2.setBounds(10,90,500,50);
+
         }
             else if(actionEvent.getSource()==jb1) {
                 try {
@@ -87,7 +89,7 @@ public class Truncate implements ActionListener {
 
                     boolean q = stmt.execute(sql);
                     ResultSet rs = stmt.executeQuery(sql);
-                    while (rs.next()) {
+                  if (rs.next()) {
                         jl3.setText("Sno of book 1 is : " + rs.getString(3) + " ");
                         jl3.setBounds(10, 90, 500, 50);
                         jl4.setText("SNo of book 2 is : " + rs.getString(4) + " ");
@@ -97,9 +99,16 @@ public class Truncate implements ActionListener {
                         jl6.setText("SNo of book 4 is : " + rs.getString(6) + " ");
                         jl6.setBounds(10, 150, 500, 50);
                     }
+                  else{
+                      Error.setText("No Data Available.");
+                      Error.setBounds(10,200,500,50);
+
+                  }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Error.setText("No Data Available.");
+                    Error.setBounds(10,200,500,50);
                 }
+
 
 
             }
@@ -115,11 +124,13 @@ public class Truncate implements ActionListener {
 
             try {
                 boolean rs = stmt.execute("DELETE FROM library WHERE lcase(trim(Stdid))='"+Stdid+"'");
+                label2.setText("Deleted record");
+                label2.setBounds(10,90,500,50);
             } catch (SQLException e) {
-                e.printStackTrace();
+                label2.setText("Deleted Record of the Student-ID "+Stdid);
+                label2.setBounds(10,90,500,50);
             }
-            label2.setText("Deleted record");
-            label2.setBounds(10,90,500,50);
+
         }
             else
         {

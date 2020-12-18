@@ -140,7 +140,7 @@ public class Student1 implements ActionListener {
         try{
             ps.executeUpdate();
             label1.setText("Inserted!");
-
+            label1.setBounds(10,350,100,25);
         }catch (Exception e ){
            Error.setText("Error caught check Info provided");
            Error.setBounds(10,350,500,25);

@@ -28,6 +28,7 @@ public class Library implements ActionListener {
     JLabel jl5 = new JLabel();
     JLabel jl6 = new JLabel();
     JButton jb;
+    JLabel Error = new JLabel();
     String book1,book2,book3,book4;
     String Libid,Stid;
     JTextField text1,text2,text3,text4,text5,text6;
@@ -80,6 +81,7 @@ public class Library implements ActionListener {
         jf.add(text6);
         jf.add(jb);
         jf.add(label1);
+        jf.add(Error);
      // 2. Create a statement
 
 
@@ -94,7 +96,8 @@ public class Library implements ActionListener {
         try {
             sql= "insert into Library (Stdid,Libid,book1,book2,book3,book4) values (  ? , ? , ? , ? , ? , ?)";
         }catch(Exception e){
-            e.printStackTrace();
+            Error.setText("Failed to insert Library Data.");
+            Error.setBounds(10,90,500,50);
 
         }
         try {
@@ -127,16 +130,18 @@ public class Library implements ActionListener {
 
 try {
     ps.executeUpdate();
+    label1.setText("Inserted!");
+    label1.setBounds(10,290,100,25);text1.setText(" " );
+    text2.setText(" " );
+    text3.setText(" " );
+    text4.setText(" " );
+    text5.setText(" " );
+    text6.setText(" " );
 }catch (Exception e){
-    e.printStackTrace();
+    Error.setText("Failed to insert Library Data.");
+    Error.setBounds(10,250,500,50);
 }
-        label1.setText("Inserted!");
-        label1.setBounds(10,290,100,25);text1.setText(" " );
-        text2.setText(" " );
-        text3.setText(" " );
-        text4.setText(" " );
-        text5.setText(" " );
-        text6.setText(" " );
+
 
 
 
