@@ -124,10 +124,10 @@ public class Truncate implements ActionListener {
 
             try {
                 boolean rs = stmt.execute("DELETE FROM library WHERE lcase(trim(Stdid))='"+Stdid+"'");
-                label2.setText("Deleted record");
+                label2.setText("Deleted record of Student ID  : "+Stdid);
                 label2.setBounds(10,90,500,50);
             } catch (SQLException e) {
-                label2.setText("Deleted Record of the Student-ID "+Stdid);
+                label2.setText("Failed to Delete Record of the Student-ID "+Stdid);
                 label2.setBounds(10,90,500,50);
             }
 
