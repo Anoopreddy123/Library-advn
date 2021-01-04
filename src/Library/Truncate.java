@@ -16,6 +16,7 @@ public class Truncate implements ActionListener {
     JLabel jl4 = new JLabel();
     JLabel jl5 = new JLabel();
     JLabel jl6 = new JLabel();
+    JLabel jl7 = new JLabel();
     JLabel label2 = new JLabel();
     JTextField text;
     Statement stmt;
@@ -51,6 +52,7 @@ public class Truncate implements ActionListener {
         jf.add(jl4);
         jf.add(jl5);
         jf.add(jl6);
+        jf.add(jl7);
         jf.add(label2);
 
         }
@@ -61,12 +63,12 @@ public class Truncate implements ActionListener {
         jl4.setText(" " );
         jl5.setText(" " );
         jl6.setText(" " );
-
+    jl7.setText(" ");
         if(actionEvent.getSource()==jb) {
             try {
-                boolean rs = stmt.execute("SET FOREIGN_KEY_CHECKS = 0;");
-                boolean rs1 = stmt.execute("TRUNCATE table Library ;");
-                boolean rs2 = stmt.execute("SET FOREIGN_KEY_CHECKS = 1;");
+                 stmt.execute("SET FOREIGN_KEY_CHECKS = 0;");
+                stmt.execute("TRUNCATE table Library ;");
+               stmt.execute("SET FOREIGN_KEY_CHECKS = 1;");
                 label2.setText("Cleared Table.");
                 label2.setBounds(10,90,500,50);
             } catch (Exception e) {
@@ -98,6 +100,8 @@ public class Truncate implements ActionListener {
                         jl5.setBounds(10, 130, 500, 50);
                         jl6.setText("SNo of book 4 is : " + rs.getString(6) + " ");
                         jl6.setBounds(10, 150, 500, 50);
+                        jl7.setText("Date : "+rs.getString(7)+" ");
+                      jl7.setBounds(10, 170, 500, 50);
                     }
                   else{
                       Error.setText("No Data Available.");
