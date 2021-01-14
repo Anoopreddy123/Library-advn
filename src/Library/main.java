@@ -21,14 +21,14 @@ public class main {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Student", "root", "Anoop@123");
                 Statement stmt = conn.createStatement();
+                Gui gui = new Gui();
             }catch(Exception e){
-                System.out.println(e);
+                Error error = new Error();
             }
              //main window
-            Gui gui = new Gui();
-        // Student1 s = new Student1();
-          //Library l = new Library();
-            //  Truncate t  = new Truncate();
+
+
+
 
 
 

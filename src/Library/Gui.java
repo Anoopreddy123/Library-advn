@@ -20,7 +20,7 @@ public class Gui  {
 
     Gui() {
         JFrame jf = new JFrame("Sphoorthy Engg College. ");
-       jf.setSize(1200, 720);
+
 
         jf.setLayout(null);
         jf.setVisible(true);
