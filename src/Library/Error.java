@@ -18,8 +18,4 @@ public class Error {
        jf.add(label1);
 
    }
-
-
-
-
 }
